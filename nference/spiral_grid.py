@@ -1,10 +1,10 @@
 
 def spiral(n=4):
-    matrix = [[0 for i in range(4)] for i in range(4)]
+    matrix = [[0 for i in range(n)] for i in range(n)]
     width=len(matrix[0])
     height=len(matrix)
     
-    values_to_drop = list(range(1,4**2+1))
+    values_to_drop = list(range(1,n**2+1))
     position = (0,0)
     seen=[]
     direction = 'right'
@@ -44,7 +44,7 @@ def spiral(n=4):
     return matrix
 
 
-matrix = spiral(4)
+matrix = spiral(9)
 [print(i) for i in matrix]
 
 
