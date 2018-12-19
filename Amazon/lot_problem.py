@@ -21,11 +21,12 @@ def bfs(grid, start):
                 queue.append(path + [(x2,y2)])
                 seen.add((x2,y2))
         count=count+1
-        print(count)
-        print(path)
+        #print(count)
+        #print(path)
     return ["we didn't get to finish",path]
     
 
 
 shortest_path = bfs(lot, (0,0))
+print(shortest_path)
 
