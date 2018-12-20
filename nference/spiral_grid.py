@@ -1,5 +1,7 @@
 
+
 def spiral(n=5):
+
     matrix = [[0 for i in range(n)] for i in range(n)]
     width=len(matrix[0])
     height=len(matrix)
@@ -29,6 +31,7 @@ def spiral(n=5):
 
         matrix[position[1]][position[0]] = new_value
 
+
         #If you hit a wall turn right
         if (position[0] == width-1 and direction == 'right') or \
             (position[1] == height-1 and direction == 'down') or \
@@ -41,10 +44,12 @@ def spiral(n=5):
         
         seen.append(position)
         position = move(direction, position)
-        # premature_count = premature_count + 1
 
-    [print(i) for i in matrix]
-    return True
 
-print(spiral(9))
-# print(spiral(100)[50][49])
+    return matrix
+
+
+matrix = spiral(9)
+[print(i) for i in matrix]
+
+
