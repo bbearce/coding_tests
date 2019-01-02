@@ -28,6 +28,7 @@ def duplicate_encode(word):
     return new_string
 
 answer = duplicate_encode('Success')
+print(answer)
 
 
 Test.assert_equals(duplicate_encode("din"),"(((")
