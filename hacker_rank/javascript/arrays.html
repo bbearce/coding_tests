@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>arrays</title>
+</head>
+<body>
+<script type="text/javascript">
+/**
+*   Return the second largest number in the array.
+*   @param {Number[]} nums - An array of numbers.
+*   @return {Number} The second largest number in the array.
+**/
+function getSecondLargest(nums) {
+    // Complete the function
+    var unique = nums.filter((v, i, a) => a.indexOf(v) === i); 
+    let second;
+    if (unique.length > 1){
+        // Compare Functions Info: https://www.w3schools.com/js/js_array_sort.asp
+        second = unique.sort(function(a, b){return a - b})[unique.length-2]
+    }else {
+        second = unique[0]
+    }
+
+    // second = unique.length > 1 ? unique.sort()[unique.length-2]: unique[0]
+
+    return second
+}    
+</script>
+</body>
+</html>
