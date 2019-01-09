@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>count_objects</title>
+</head>
+<body>
+<script type="text/javascript">
+
+// Objective
+
+// In this challenge, we learn about iterating over objects. Check the attached tutorial for more details.
+
+// Task
+
+// Complete the function in the editor. It has one parameter: an array, a, of objects. Each object in the array has two integer properties denoted by x and y. The function must return a count of all such objects  in array that satisfy o.x == o.y.
+
+// Input Format
+
+// The first line contains an integer denoting n. 
+// Each of the n subsequent lines contains two space-separated integers describing the values of x and y.
+
+// Constraints
+// *5<=n<=10
+// *1<=x,y<=100
+
+// Output Format
+
+// Return a count of the total number of objects o such that o.x == o.y. Locked stub code in the editor prints the returned value to STDOUT.
+
+// Sample Input 0
+
+// 5
+// 1 1
+// 2 3
+// 3 3
+// 3 4
+// 4 5
+// Sample Output 0
+
+// 2
+// Explanation 0
+
+// There are n=5 objects in the objects array:
+
+// *objects_s0={x:1, y:1}
+// *objects_s1={x:2, y:3}
+// *objects_s2={x:3, y:3}
+// *objects_s3={x:3, y:4}
+// *objects_s4={x:4, y:5}
+
+
+// Because we have two objects o that satisfy o.x == o.y (i.e., objects_s0 and objects_s2), we return 2 as our answer.
+
+/*
+ * Return a count of the total number of objects 'o' satisfying o.x == o.y.
+ * 
+ * Parameter(s):
+ * objects: an array of objects with integer properties 'x' and 'y'
+ */
+function getCount(objects) {
+    var count_objects_that_match = 0
+    for(let o in objects){
+        if (objects[o].x === objects[o].y) {count_objects_that_match ++ }
+    }
+    // console.log(count_objects_that_match)
+    return(count_objects_that_match)
+}
+
+
+</script>
+</body>
+</html>
