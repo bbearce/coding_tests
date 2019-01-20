@@ -26,7 +26,17 @@ def group_adjust(vals, groups, weights):
 
     A list-like demeaned version of the input values
     """
-    # raise NotImplementedError # I believe this is how the code starts and should not run
+
+    ### Error Handling ###
+
+    # Check that weights length equals group length
+    if len(weights) != len(groups):
+        raise ValueError("Need to have 1 weight for each group")
+
+    # Check that groups have the same length
+    group_lengths = [len(grp) for grp in groups]
+    if all([group_length == len(vals) for group_length in group_lengths]) != True:
+        raise ValueError("The groups need to be same shape as vals")
 
     # Store groups as dictionary converted to dataframe
     # Use this dict as the basis for main data table
@@ -41,14 +51,14 @@ def group_adjust(vals, groups, weights):
     # Put vals and groups together together
     table = pd.concat([vals, table], axis = 1)
 
-    # Find the group means...by using transform, we can avoid a group by and then a join.
-    # Now the grouped means can be expanded with duplicates for each member of the group
+    # Find the group means...by using transform (window function), we can avoid a group by and then a join.
+    # Now the grouped means can be expanded with duplicates for each member of the group.
     for i in range(len(groups)):
         table['group{}_means'.format(i+1)] = table.groupby('group_{}'.format(i+1))['vals'].transform(lambda x: x.mean())
 
     # Create an empty weighted means column to store the weighted means
     table['weighted_means'] = pd.DataFrame({'weighted_means':[0]*len(vals)})
-    # Fill that column with each groups mean times its associated weight
+    # Fill that column with each group's mean times its associated weight
     for id,weight in enumerate(weights.columns.sort_values()):
         table['weighted_means'] += table['group{}_means'.format(id+1)]*float(weights[weight])
 
@@ -56,6 +66,8 @@ def group_adjust(vals, groups, weights):
     table['demeaned'] = table['vals'] - table['weighted_means']
 
     return list(table['demeaned'])
+
+
 
 def test_three_groups():
     vals = [1, 2, 3, 8, 5]
@@ -157,6 +169,7 @@ def test_performance():
     group_adjust(vals, [grps_1, grps_2, grps_3], weights)
     end = datetime.now()
     diff = end - start
+    # return diff
 
 
 
