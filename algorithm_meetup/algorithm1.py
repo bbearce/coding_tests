@@ -20,6 +20,7 @@ class algo1():
         pass
 
     def check(self, string):
+        pdb.set_trace()
         text = string
         keys = {'(':')','[':']','{':'}'}
         stack = []
@@ -39,8 +40,5 @@ class algo1():
 
         
 
-    
-
-
-
-
+x = algo1()
+x.check(test5)
