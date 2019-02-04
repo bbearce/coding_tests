@@ -16,7 +16,7 @@ function addNumbersAndOperands(e){
 function calculate(){
     const expression = document.getElementById('res').innerHTML;
     re_operands = /\d+/g
-    re_operator = /[+]|[-]|[=]|[/]/
+    re_operator = /[+]|[-]|[*]|[/]/
     const operands = expression.match(re_operands)
     const operator = expression.match(re_operator)[0]
     operand1 = parseInt(operands[0],2)
