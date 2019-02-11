@@ -33,6 +33,10 @@
 def wrapper(f):
     def fun(l):
         # complete the function
+        new_number_list = [i[-10:] for i in l]
+        new_number_list = ['+91 {} {}'.format(i[-10:-5], i[-5:]) for i in new_number_list]
+        new_function = f(new_number_list)
+        return new_function
     return fun
 
 @wrapper
